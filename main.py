@@ -1,3 +1,6 @@
+__author__ = "Daniell Castelo Branco Ciriaco"
+__email__ = "niellcast.contato@outlook.com"
+
 from time import sleep
 from src.telegram.bot import Bot
 from src.telegram.links import CleanLink
