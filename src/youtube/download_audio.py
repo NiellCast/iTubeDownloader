@@ -1,9 +1,12 @@
-from pytube import YouTube, Playlist
+from pytube import YouTube
 
 
 class Downloader:
     @staticmethod
     def regular_download(url: str) -> None:
         video = YouTube(url)
-        video.streams.filter(only_audio=True)
-        video.streams.get_audio_only().download(output_path=r'downloads')
+        video.streams.get_lowest_resolution().download(output_path=r'downloaded')
+
+    @staticmethod
+    def get_name(url) -> str:
+        return YouTube(url).title.replace('.', '')
