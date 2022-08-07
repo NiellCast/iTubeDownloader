@@ -4,12 +4,12 @@ from typing import List
 
 class Delete:
     @staticmethod
-    def deletar(file: List) -> None:
+    def deletar(files: List) -> None:
         """
-        :param file: Recebe o nome dos arquivos baixados.
+        :param files: Recebe o nome dos arquivos baixados.
         :return: Deleta os arquivos que já foram enviados para o usuário e já não são úteis.
         """
 
-        for f in file:
-            os.remove(f)
+        for file in files:
+            os.remove(file)
 

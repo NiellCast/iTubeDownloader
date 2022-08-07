@@ -6,5 +6,4 @@ class CleanLink:
         :return: Retorna somente o link do vídeo sem o comando "/baixar".
         """
 
-        msg = msg.replace(' ', '')[7:]
-        return msg
+        return msg.replace(' ', '')[7:]

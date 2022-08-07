@@ -1,7 +1,7 @@
 from time import sleep
 from src.telegram.bot import Bot
 from src.telegram.links import CleanLink
-from src.youtube.download_audio import Downloader
+from src.youtube.download_video import Downloader
 import pytube.exceptions
 from src.conversor.conversor import Conversor
 from src.delete.delete_file import Delete
@@ -20,8 +20,8 @@ def run() -> None:
         mensagens = ['Envie o comando /baixar + o link do seu vídeo para fazer o download!',
                      'Exemplo: /baixar https://www.youtube.com/watch?v=z2Dn0MeWCws&list=RDR77IDMm5D2Y&index=2']
 
-        for m in mensagens:
-            bot.reply_to(message, m)
+        for msg in mensagens:
+            bot.reply_to(message, msg)
 
     @bot.message_handler(commands=['baixar'])
     def get_video_link(message) -> None:
@@ -42,9 +42,6 @@ def run() -> None:
 
             video_path = f'downloaded/{song_name}.mp4'
             audio_path = video_path.replace('.mp4', '.mp3')
-
-            # print(song_name)
-            # print(os.listdir('downloaded'))
 
             Conversor.converter(video_path, audio_path)
             bot.send_audio(message.chat.id, open(audio_path, 'rb'))
